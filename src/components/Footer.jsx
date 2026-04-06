@@ -46,7 +46,7 @@ function Footer() {
 
         <div className="footer-meta">
           <p>© 2026 Fort Hays State University</p>
-          <a href="https://github.com/" target="_blank" rel="noreferrer">
+          <a href="https://github.com/Paulen101/GPA_Calculator" target="_blank" rel="noreferrer">
             Project source / developer
           </a>
         </div>

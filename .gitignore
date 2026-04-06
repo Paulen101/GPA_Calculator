@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# files
+
+CODEX.md
+GEMINI.md
