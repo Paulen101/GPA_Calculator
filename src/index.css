@@ -1,0 +1,306 @@
+:root {
+  color: #171717;
+  background:
+    radial-gradient(circle at top, rgba(241, 179, 0, 0.18), transparent 30%),
+    linear-gradient(180deg, #fff8e1 0%, #f6f0dd 24%, #f4f4f1 100%);
+  font-family: 'Sora', 'Avenir Next', 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --fhsu-black: #000000;
+  --fhsu-gold: #f1b300;
+  --fhsu-gold-light: #fde68a;
+  --fhsu-gray: #4a4a4a;
+  --surface: rgba(255, 255, 255, 0.82);
+  --surface-strong: rgba(255, 255, 255, 0.92);
+  --surface-dark: #101010;
+  --border: rgba(0, 0, 0, 0.08);
+  --shadow:
+    0 16px 48px rgba(10, 10, 10, 0.1),
+    0 4px 12px rgba(10, 10, 10, 0.05);
+  --radius-xl: 1.75rem;
+  --radius-lg: 1.15rem;
+  --radius-md: 0.9rem;
+  --transition: 200ms ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.2;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.4), transparent 85%);
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.section-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(20px);
+}
+
+.section-card::before {
+  content: '';
+  position: absolute;
+  inset: auto -20% -65% 35%;
+  height: 16rem;
+  background: radial-gradient(circle, rgba(241, 179, 0, 0.18), transparent 68%);
+  pointer-events: none;
+}
+
+.section-inner {
+  position: relative;
+  padding: 1.25rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(241, 179, 0, 0.38);
+  background: rgba(241, 179, 0, 0.12);
+  color: var(--fhsu-black);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.section-heading {
+  margin: 0.85rem 0 0.45rem;
+  color: var(--fhsu-black);
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+.section-copy {
+  margin: 0;
+  max-width: 42rem;
+  color: rgba(0, 0, 0, 0.68);
+}
+
+.btn,
+.icon-button {
+  border: 0;
+  transition:
+    transform var(--transition),
+    background-color var(--transition),
+    box-shadow var(--transition),
+    color var(--transition);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.btn:focus-visible,
+.icon-button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(241, 179, 0, 0.38);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  color: #fff8ea;
+  background: linear-gradient(135deg, #181818 0%, #000000 65%);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover,
+.btn-secondary:hover,
+.icon-button:hover {
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  color: var(--fhsu-black);
+  background: rgba(241, 179, 0, 0.14);
+  border: 1px solid rgba(241, 179, 0, 0.35);
+}
+
+.icon-button {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.07);
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.icon-button:hover {
+  background: rgba(201, 37, 37, 0.12);
+  color: #9f1d1d;
+}
+
+.fade-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 500ms ease,
+    transform 500ms ease;
+}
+
+.fade-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gradient-number {
+  background: linear-gradient(135deg, #f1b300 0%, #ffd772 48%, #8c5a00 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border: 1px solid transparent;
+}
+
+.badge.excellent {
+  background: rgba(13, 148, 136, 0.14);
+  border-color: rgba(13, 148, 136, 0.25);
+  color: #0f766e;
+}
+
+.badge.strong {
+  background: rgba(37, 99, 235, 0.14);
+  border-color: rgba(37, 99, 235, 0.25);
+  color: #1d4ed8;
+}
+
+.badge.good {
+  background: rgba(234, 179, 8, 0.14);
+  border-color: rgba(234, 179, 8, 0.25);
+  color: #a16207;
+}
+
+.badge.warning {
+  background: rgba(220, 38, 38, 0.14);
+  border-color: rgba(220, 38, 38, 0.25);
+  color: #b91c1c;
+}
+
+.input,
+.select {
+  width: 100%;
+  min-height: 2.9rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.92);
+  padding: 0.72rem 0.85rem;
+  color: var(--fhsu-black);
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition),
+    background-color var(--transition);
+}
+
+.input:hover,
+.select:hover {
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.stat-grid {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.stat-card {
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.045);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.stat-label {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.stat-value {
+  margin: 0.2rem 0 0;
+  color: var(--fhsu-black);
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .section-inner {
+    padding: 1.75rem;
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
