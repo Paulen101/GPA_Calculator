@@ -136,8 +136,10 @@ export function getDonutHue(gpa) {
   return clampGpa(gpa) * 40
 }
 
-export function getRingStroke(gpa) {
-  const hue = getDonutHue(gpa)
+export function getRingStroke(value, maxValue = 4) {
+  const safeMaxValue = maxValue > 0 ? maxValue : 4
+  const clampedValue = Math.max(0, Math.min(Number(value) || 0, safeMaxValue))
+  const hue = (clampedValue / safeMaxValue) * 160
   return `hsl(${hue}, 100%, 45%)`
 }
 

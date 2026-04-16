@@ -24,7 +24,8 @@ function CumulativeCalculator({
           <h2 className="section-heading">Project your full FHSU standing.</h2>
           <p className="section-copy">
             Previous quality points are derived from your prior cumulative GPA and
-            attempted credits, then combined with the current semester automatically.
+            GPA-counted credit hours, then combined with the GPA-counted courses from
+            the current semester.
           </p>
         </div>
 
@@ -43,7 +44,7 @@ function CumulativeCalculator({
               />
             </label>
             <label className="field">
-              <span className="field-label">Previous credit hours attempted</span>
+              <span className="field-label">Previous GPA credit hours</span>
               <input
                 className="input"
                 type="number"
@@ -58,7 +59,7 @@ function CumulativeCalculator({
               label="Projected Cumulative GPA"
               gpa={cumulativeMetrics.gpa}
               classification={cumulativeMetrics.classification}
-              helperText={`${cumulativeMetrics.totalCredits} total attempted credit hours after this term.`}
+              helperText={`${cumulativeMetrics.totalCredits} total GPA-counted credit hours after this term.`}
             />
           </div>
 

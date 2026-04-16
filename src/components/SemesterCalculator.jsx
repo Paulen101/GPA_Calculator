@@ -84,7 +84,11 @@ function SemesterCalculator({
                   Change the temporary grade column to simulate outcomes without
                   overwriting your current grades. Highlighted rows are projected changes.
                 </p>
-                <button type="button" className="header-link what-if-clear" onClick={clearScenarioGrades}>
+                <button
+                  type="button"
+                  className="btn btn-secondary what-if-clear"
+                  onClick={clearScenarioGrades}
+                >
                   Clear scenario grades
                 </button>
               </div>
@@ -127,7 +131,7 @@ function SemesterCalculator({
                 <p className="stat-value">{formatTruncated(semesterMetrics.qualityPoints)}</p>
               </div>
               <div className="stat-card">
-                <p className="stat-label">Attempted Credits</p>
+                <p className="stat-label">Counted Credits</p>
                 <p className="stat-value">{semesterMetrics.creditHours}</p>
               </div>
               <div className="stat-card">

@@ -1,4 +1,4 @@
-function Header({ onReset, onSelectCalculator }) {
+function Header({ activeCalculator, activeGpaSection, onReset, onSelectCalculator }) {
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({
       behavior: 'smooth',
@@ -36,32 +36,40 @@ function Header({ onReset, onSelectCalculator }) {
         <nav className="header-nav" aria-label="Primary">
           <button
             type="button"
-            className="header-link"
+            className={`header-link ${activeCalculator === 'gpa' ? 'is-active' : ''}`}
             onClick={() => handleCalculatorSelect('gpa')}
+            aria-current={activeCalculator === 'gpa' ? 'page' : undefined}
           >
             GPA Calculator
           </button>
           <button
             type="button"
-            className="header-link"
+            className={`header-link ${activeCalculator === 'grade' ? 'is-active' : ''}`}
             onClick={() => handleCalculatorSelect('grade')}
+            aria-current={activeCalculator === 'grade' ? 'page' : undefined}
           >
             Grade Calculator
           </button>
-          <button
-            type="button"
-            className="header-link"
-            onClick={() => handleGpaSectionSelect('semester-calculator')}
-          >
-            Semester
-          </button>
-          <button
-            type="button"
-            className="header-link"
-            onClick={() => handleGpaSectionSelect('cumulative-calculator')}
-          >
-            Cumulative
-          </button>
+          {activeCalculator === 'gpa' ? (
+            <>
+              <button
+                type="button"
+                className={`header-link header-link-secondary ${activeGpaSection === 'semester' ? 'is-section-active' : ''}`}
+                onClick={() => handleGpaSectionSelect('semester-calculator')}
+                aria-current={activeGpaSection === 'semester' ? 'location' : undefined}
+              >
+                Semester
+              </button>
+              <button
+                type="button"
+                className={`header-link header-link-secondary ${activeGpaSection === 'cumulative' ? 'is-section-active' : ''}`}
+                onClick={() => handleGpaSectionSelect('cumulative-calculator')}
+                aria-current={activeGpaSection === 'cumulative' ? 'location' : undefined}
+              >
+                Cumulative
+              </button>
+            </>
+          ) : null}
           <button type="button" className="btn btn-secondary header-reset" onClick={onReset}>
             Start Over
           </button>

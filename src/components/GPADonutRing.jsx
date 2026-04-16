@@ -35,7 +35,7 @@ function GPADonutRing({
             cy="60"
             r={radius}
             fill="none"
-            stroke={getRingStroke(gpa)}
+            stroke={getRingStroke(gpa, safeMaxValue)}
             strokeWidth="10"
             strokeDasharray={circumference}
             strokeDashoffset={circumference - progress}

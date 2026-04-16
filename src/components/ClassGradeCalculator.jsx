@@ -64,7 +64,13 @@ function ClassGradeCalculator({
         <div className="calculator-grid">
           <div className="course-list-panel">
             <div className="course-list-head">
-              <p className="stat-label">Current Grade Calculator</p>
+              <div className="panel-heading-group">
+                <p className="stat-label">Assignments</p>
+                <p className="panel-copy">
+                  Add each graded item with its score and weight to build your current
+                  weighted average.
+                </p>
+              </div>
               <div className="course-actions">
                 <button type="button" className="btn btn-secondary" onClick={addAssignment}>
                   Add Assignment
@@ -84,26 +90,14 @@ function ClassGradeCalculator({
               ))}
             </div>
 
-            <div className="what-if-banner grade-summary-banner" role="status" aria-live="polite">
-              <p className="what-if-title">Weighted class average</p>
-              <div className="grade-hero-line">
-                <p
-                  className="gpa-value gradient-number"
-                  aria-label={`Current class grade ${formatPercentage(currentGradeMetrics.percentage)} percent`}
-                >
-                  <CountUpNumber value={currentGradeMetrics.percentage} suffix="%" />
-                </p>
-              </div>
-              <p className="what-if-copy">
-                Based on {formatPercentage(currentGradeMetrics.completedWeight)}% of your
-                course weight entered so far.
-              </p>
-            </div>
-
             <div className="final-exam-panel">
               <div className="calculator-copy final-exam-copy">
-                <p className="stat-label">Final Exam Target Calculator</p>
+                <p className="stat-label">Final Exam Planner</p>
                 <h3 className="final-exam-heading">Plan the finish.</h3>
+                <p className="panel-copy">
+                  Use your actual course grade before the final, then set your target
+                  overall grade and final weight to see what you need.
+                </p>
               </div>
 
               <div className="final-exam-grid">
@@ -158,14 +152,18 @@ function ClassGradeCalculator({
                     ? '--'
                     : `${formatPercentage(finalExamResult.neededGrade)}%`}
                 </p>
+                <p className="gpa-helper">
+                  Enter your actual course grade before the final exam. The assignment
+                  average on this page is a reference, not always the same value.
+                </p>
                 <p className="gpa-helper">{finalExamResult.message}</p>
               </div>
             </div>
           </div>
 
           <aside className="summary-panel">
-            <div className="gpa-display" aria-live="polite">
-              <p className="stat-label">Live Class Grade</p>
+            <div className="gpa-display summary-hero" aria-live="polite">
+              <p className="stat-label">Current Weighted Grade</p>
               <div className="gpa-hero-line">
                 <p
                   className="gpa-value gradient-number"
@@ -175,7 +173,9 @@ function ClassGradeCalculator({
                 </p>
               </div>
               <p className="gpa-helper">
-                Weighted from all assignment rows with a positive percentage weight.
+                Built from {assignments.length} assignment{assignments.length === 1 ? '' : 's'} and{' '}
+                {formatPercentage(currentGradeMetrics.completedWeight)}% of your entered
+                course weight.
               </p>
             </div>
 
@@ -194,13 +194,13 @@ function ClassGradeCalculator({
                 <p className="stat-value">{assignments.length}</p>
               </div>
               <div className="stat-card">
-                <p className="stat-label">Weight Entered</p>
+                <p className="stat-label">Completed Weight</p>
                 <p className="stat-value">
                   {formatPercentage(currentGradeMetrics.completedWeight)}%
                 </p>
               </div>
               <div className="stat-card">
-                <p className="stat-label">Final Goal Check</p>
+                <p className="stat-label">Needed on Final</p>
                 <p className="stat-value">
                   {finalExamResult.neededGrade === null
                     ? '--'

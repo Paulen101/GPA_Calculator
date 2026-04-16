@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import SemesterCalculator from './components/SemesterCalculator'
@@ -46,6 +46,7 @@ const INITIAL_ASSIGNMENTS = [
 function App() {
   const [courses, setCourses] = useState(INITIAL_COURSES)
   const [activeCalculator, setActiveCalculator] = useState('gpa')
+  const [activeGpaSection, setActiveGpaSection] = useState('semester')
   const [whatIfMode, setWhatIfMode] = useState(false)
   const [previousGpa, setPreviousGpa] = useState('3.25')
   const [previousCredits, setPreviousCredits] = useState('45')
@@ -66,11 +67,52 @@ function App() {
   const semesterMetrics = getSemesterMetrics(effectiveCourses)
   const baseSemesterMetrics = getSemesterMetrics(courses)
 
+  useEffect(() => {
+    if (activeCalculator !== 'gpa') {
+      return undefined
+    }
+
+    const sectionIds = ['semester-calculator', 'cumulative-calculator']
+    const sectionMap = {
+      'semester-calculator': 'semester',
+      'cumulative-calculator': 'cumulative',
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntry = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((entryA, entryB) => entryB.intersectionRatio - entryA.intersectionRatio)[0]
+
+        if (visibleEntry) {
+          setActiveGpaSection(sectionMap[visibleEntry.target.id])
+        }
+      },
+      {
+        rootMargin: '-20% 0px -55% 0px',
+        threshold: [0.2, 0.4, 0.65],
+      },
+    )
+
+    sectionIds.forEach((id) => {
+      const element = document.getElementById(id)
+
+      if (element) {
+        observer.observe(element)
+      }
+    })
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [activeCalculator])
+
   const resetAll = () => {
     setCourses(INITIAL_COURSES.map((course) => createCourse(course)))
     setAssignments(INITIAL_ASSIGNMENTS.map((assignment) => createAssignment(assignment)))
     setWhatIfMode(false)
     setActiveCalculator('gpa')
+    setActiveGpaSection('semester')
     setPreviousGpa('3.25')
     setPreviousCredits('45')
     setFinalExamInputs({
@@ -87,7 +129,12 @@ function App() {
 
   return (
     <div className="app-shell" id="top">
-      <Header onReset={resetAll} onSelectCalculator={selectCalculator} />
+      <Header
+        activeCalculator={activeCalculator}
+        activeGpaSection={activeGpaSection}
+        onReset={resetAll}
+        onSelectCalculator={selectCalculator}
+      />
       <Hero />
       <section className="calculator-switcher-wrap" id="calculator-switcher">
         <div className="calculator-switcher">

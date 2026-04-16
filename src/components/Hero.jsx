@@ -19,7 +19,7 @@ function Hero() {
         <div className="hero-topline">
           <div className="hero-wordmark" aria-label="Fort Hays State University">
             <span className="wordmark-mark">FHSU</span>
-            <span className="wordmark-text">Fort Hays State University</span>
+            <span className="wordmark-text">Fort Hays State GPA Calculator</span>
           </div>
         </div>
         <div className="hero-body">
