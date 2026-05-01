@@ -1,3 +1,5 @@
+import Icon from './Icon'
+
 function AssignmentRow({ assignment, onChange, onRemove, disableRemove }) {
   const updateField = (field, value) => {
     onChange(assignment.id, field, value)
@@ -47,7 +49,7 @@ function AssignmentRow({ assignment, onChange, onRemove, disableRemove }) {
           disabled={disableRemove}
           aria-label={`Remove ${assignment.name || 'assignment'}`}
         >
-          ×
+          <Icon name="trash" />
         </button>
       </div>
     </article>

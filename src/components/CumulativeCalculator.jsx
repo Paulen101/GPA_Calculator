@@ -1,6 +1,7 @@
 import FadeContent from './FadeContent'
 import GPADisplay from './GPADisplay'
 import GPADonutRing from './GPADonutRing'
+import Icon from './Icon'
 import { getCumulativeGpa } from '../utils/gpaLogic'
 
 function CumulativeCalculator({
@@ -20,7 +21,10 @@ function CumulativeCalculator({
     <FadeContent className="section-card" id="cumulative-calculator">
       <section className="section-inner cumulative-layout">
         <div className="calculator-copy">
-          <p className="eyebrow">Cumulative GPA</p>
+          <p className="eyebrow">
+            <Icon name="chart" />
+            Cumulative GPA
+          </p>
           <h2 className="section-heading">Project your full FHSU standing.</h2>
           <p className="section-copy">
             Previous quality points are derived from your prior cumulative GPA and

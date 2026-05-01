@@ -5,6 +5,7 @@ import SemesterCalculator from './components/SemesterCalculator'
 import CumulativeCalculator from './components/CumulativeCalculator'
 import ClassGradeCalculator from './components/ClassGradeCalculator'
 import Footer from './components/Footer'
+import Icon from './components/Icon'
 import { createCourse, getSemesterMetrics } from './utils/gpaLogic'
 import { createAssignment } from './utils/gradeLogic'
 import './App.css'
@@ -144,6 +145,7 @@ function App() {
             onClick={() => setActiveCalculator('gpa')}
             aria-pressed={activeCalculator === 'gpa'}
           >
+            <Icon name="calculator" />
             GPA Calculator
           </button>
           <button
@@ -152,6 +154,7 @@ function App() {
             onClick={() => setActiveCalculator('grade')}
             aria-pressed={activeCalculator === 'grade'}
           >
+            <Icon name="target" />
             Grade Calculator
           </button>
         </div>

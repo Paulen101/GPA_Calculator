@@ -1,6 +1,7 @@
-function Hero() {
-  const headlineWords = ['Fort Hays State', 'GPA', 'Calculator']
+import fhsuLogo from '../assets/fhsu-primary-left-logo-black-text.png'
+import Icon from './Icon'
 
+function Hero() {
   const scrollToCalculator = () => {
     document.getElementById('calculator-switcher')?.scrollIntoView({
       behavior: 'smooth',
@@ -10,41 +11,57 @@ function Hero() {
 
   return (
     <header className="hero-shell">
-      <div className="hero-aurora" aria-hidden="true">
-        <span className="hero-orb hero-orb-one" />
-        <span className="hero-orb hero-orb-two" />
-        <span className="hero-orb hero-orb-three" />
-      </div>
       <section className="hero-content">
-        <div className="hero-topline">
-          <div className="hero-wordmark" aria-label="Fort Hays State University">
-            <span className="wordmark-mark">FHSU</span>
-            <span className="wordmark-text">Fort Hays State GPA Calculator</span>
-          </div>
-        </div>
         <div className="hero-body">
-          <p className="eyebrow">GPA Calculator</p>
-          <h1 className="hero-title" aria-label="Calculate your FHSU GPA instantly">
-            {headlineWords.map((word, index) => (
-              <span
-                key={word}
-                className="split-word"
-                style={{ animationDelay: `${index * 90}ms` }}
-              >
-                {word}
-              </span>
-            ))}
+          <div className="hero-kicker">
+            <img
+              className="hero-logo"
+              src={fhsuLogo}
+              alt="Fort Hays State University"
+            />
+            <span className="eyebrow">
+              <Icon name="graduationCap" />
+              GPA Toolkit
+            </span>
+          </div>
+          <h1 className="hero-title">
+            Plan your semester with the same calculator you use below.
           </h1>
-          <p className="hero-copy">Calculate your FHSU GPA instantly.</p>
+          <p className="hero-copy">
+            Calculate semester GPA, project cumulative standing, and estimate class
+            grade targets without leaving the page.
+          </p>
           <div className="hero-actions">
             <button type="button" className="btn btn-primary" onClick={scrollToCalculator}>
+              <Icon name="arrowDown" />
               Start Calculating
             </button>
-            <p className="hero-subcopy">
-              Semester GPA, cumulative GPA, and class grade planning in one place.
-            </p>
           </div>
         </div>
+
+        <aside className="hero-panel" aria-label="Calculator overview">
+          <div className="hero-panel-head">
+            <Icon name="calculator" size={22} />
+            <div>
+              <p className="stat-label">Current Tools</p>
+              <p className="hero-panel-title">GPA and Grade Planning</p>
+            </div>
+          </div>
+          <div className="hero-tool-list">
+            <div className="hero-tool-item">
+              <Icon name="graduationCap" />
+              <span>Semester GPA</span>
+            </div>
+            <div className="hero-tool-item">
+              <Icon name="chart" />
+              <span>Cumulative GPA</span>
+            </div>
+            <div className="hero-tool-item">
+              <Icon name="target" />
+              <span>Final Grade Target</span>
+            </div>
+          </div>
+        </aside>
       </section>
     </header>
   )

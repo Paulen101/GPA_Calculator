@@ -2,6 +2,7 @@ import FadeContent from './FadeContent'
 import CourseRow from './CourseRow'
 import GPADisplay from './GPADisplay'
 import GPADonutRing from './GPADonutRing'
+import Icon from './Icon'
 import { createCourse, formatTruncated } from '../utils/gpaLogic'
 
 function SemesterCalculator({
@@ -50,7 +51,10 @@ function SemesterCalculator({
     <FadeContent className="section-card" id="semester-calculator">
       <section className="section-inner calculator-layout">
         <div className="calculator-copy">
-          <p className="eyebrow">Semester GPA</p>
+          <p className="eyebrow">
+            <Icon name="graduationCap" />
+            Semester GPA
+          </p>
           <h2 className="section-heading">Build this term, course by course.</h2>
           <p className="section-copy">
             Add your classes, mark any older repeated attempts with <strong>RP</strong>,
@@ -69,9 +73,11 @@ function SemesterCalculator({
                   onClick={() => setWhatIfMode((currentMode) => !currentMode)}
                   aria-pressed={whatIfMode}
                 >
+                  <Icon name={whatIfMode ? 'refresh' : 'target'} />
                   {whatIfMode ? 'Exit What-If Mode' : 'Enter What-If Mode'}
                 </button>
                 <button type="button" className="btn btn-secondary" onClick={addCourse}>
+                  <Icon name="plus" />
                   Add Course
                 </button>
               </div>
@@ -89,6 +95,7 @@ function SemesterCalculator({
                   className="btn btn-secondary what-if-clear"
                   onClick={clearScenarioGrades}
                 >
+                  <Icon name="refresh" />
                   Clear scenario grades
                 </button>
               </div>

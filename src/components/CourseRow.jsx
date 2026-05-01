@@ -1,4 +1,5 @@
 import { GRADE_OPTIONS } from '../constants/grading'
+import Icon from './Icon'
 
 function CourseRow({ course, onChange, onRemove, disableRemove, whatIfMode }) {
   const updateField = (field, value) => {
@@ -83,7 +84,7 @@ function CourseRow({ course, onChange, onRemove, disableRemove, whatIfMode }) {
           disabled={disableRemove}
           aria-label={`Remove ${course.name || 'course'}`}
         >
-          ×
+          <Icon name="trash" />
         </button>
       </div>
     </article>

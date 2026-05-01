@@ -2,6 +2,7 @@ import FadeContent from './FadeContent'
 import AssignmentRow from './AssignmentRow'
 import CountUpNumber from './CountUpNumber'
 import GPADonutRing from './GPADonutRing'
+import Icon from './Icon'
 import {
   createAssignment,
   formatPercentage,
@@ -53,7 +54,10 @@ function ClassGradeCalculator({
     <FadeContent className="section-card" id="class-grade-calculator">
       <section className="section-inner calculator-layout">
         <div className="calculator-copy">
-          <p className="eyebrow">Class Grade</p>
+          <p className="eyebrow">
+            <Icon name="target" />
+            Class Grade
+          </p>
           <h2 className="section-heading">Track your weighted average and final target.</h2>
           <p className="section-copy">
             Enter completed assignments to see your live class average, then estimate
@@ -73,6 +77,7 @@ function ClassGradeCalculator({
               </div>
               <div className="course-actions">
                 <button type="button" className="btn btn-secondary" onClick={addAssignment}>
+                  <Icon name="plus" />
                   Add Assignment
                 </button>
               </div>

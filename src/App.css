@@ -37,6 +37,7 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0;
+  flex: 0 1 auto;
 }
 
 .header-nav {
@@ -48,6 +49,10 @@
 }
 
 .header-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
   padding: 0.7rem 0.85rem;
   border-radius: 999px;
   font-weight: 700;
@@ -84,84 +89,22 @@
 
 .hero-shell {
   position: relative;
-  overflow: clip;
-  padding: 0.8rem 1.25rem 2.25rem;
+  padding: 1rem 1.25rem 2.25rem;
 }
 
 .hero-content {
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
-  min-height: min(92vh, 52rem);
   display: grid;
-  align-items: center;
-  border-radius: 0 0 2rem 2rem;
+  gap: 1rem;
+  align-items: stretch;
+  border-radius: var(--radius-xl);
   border: 1px solid rgba(0, 0, 0, 0.08);
-  background:
-    linear-gradient(135deg, rgba(255, 252, 240, 0.8), rgba(255, 255, 255, 0.58)),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.04), transparent 32%);
+  background: rgba(255, 255, 255, 0.82);
   box-shadow: var(--shadow);
-}
-
-.hero-aurora {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.hero-orb {
-  position: absolute;
-  border-radius: 999px;
-  filter: blur(22px);
-  opacity: 0.55;
-  animation: drift 14s ease-in-out infinite alternate;
-}
-
-.hero-orb-one {
-  width: 20rem;
-  height: 20rem;
-  top: 4rem;
-  left: -4rem;
-  background: rgba(241, 179, 0, 0.28);
-}
-
-.hero-orb-two {
-  width: 18rem;
-  height: 18rem;
-  top: 8rem;
-  right: 8%;
-  background: rgba(18, 18, 18, 0.14);
-  animation-duration: 17s;
-}
-
-.hero-orb-three {
-  width: 28rem;
-  height: 14rem;
-  bottom: -2rem;
-  left: 30%;
-  background: rgba(253, 230, 138, 0.28);
-  animation-duration: 18s;
-}
-
-.hero-topline {
-  position: absolute;
-  top: 1.2rem;
-  left: 1.2rem;
-  right: 1.2rem;
-  display: flex;
-  justify-content: space-between;
-}
-
-.hero-wordmark {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.7rem 0.95rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px);
+  padding: 1rem;
 }
 
 .wordmark-mark {
@@ -176,7 +119,7 @@
   color: var(--fhsu-gold);
   font-size: 0.92rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
 }
 
 .wordmark-text {
@@ -185,45 +128,109 @@
   font-weight: 700;
 }
 
+.wordmark-logo {
+  display: block;
+  width: min(13rem, 62vw);
+  height: auto;
+}
+
 .hero-body {
   position: relative;
   z-index: 1;
-  padding: 6.8rem 1.25rem 1.75rem;
+  display: grid;
+  align-content: center;
+  padding: 1rem;
+}
+
+.hero-kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.hero-logo {
+  width: min(15rem, 72vw);
+  height: auto;
 }
 
 .hero-title {
-  display: grid;
-  gap: 0.15em;
-  margin: 1rem 0 0;
-  font-size: clamp(3rem, 10vw, 6.2rem);
-  line-height: 0.92;
-  letter-spacing: -0.08em;
+  max-width: 47rem;
+  margin: 1.35rem 0 0;
+  font-size: clamp(2.25rem, 6vw, 4.8rem);
+  line-height: 1;
+  letter-spacing: 0;
   color: var(--fhsu-black);
-}
-
-.split-word {
-  opacity: 0;
-  transform: translateY(16px);
-  animation: revealUp 650ms cubic-bezier(0.2, 0.85, 0.22, 1) forwards;
 }
 
 .hero-copy {
   margin: 1.3rem 0 0;
-  max-width: 36rem;
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  max-width: 44rem;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
   color: rgba(0, 0, 0, 0.72);
 }
 
 .hero-actions {
-  display: grid;
-  gap: 1rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   margin-top: 1.8rem;
-  max-width: 38rem;
 }
 
-.hero-subcopy {
-  margin: 0;
-  color: rgba(0, 0, 0, 0.62);
+.hero-panel {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background:
+    linear-gradient(180deg, rgba(241, 179, 0, 0.1), rgba(255, 255, 255, 0.9) 42%),
+    rgba(255, 255, 255, 0.94);
+  padding: 1rem;
+}
+
+.hero-panel-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hero-panel-head > .icon {
+  width: 2.6rem;
+  height: 2.6rem;
+  padding: 0.58rem;
+  border-radius: 999px;
+  color: var(--fhsu-gold);
+  background: var(--surface-dark);
+}
+
+.hero-panel-title {
+  margin: 0.1rem 0 0;
+  color: var(--fhsu-black);
+  font-weight: 800;
+}
+
+.hero-tool-list {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.hero-tool-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 3rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.82);
+  padding: 0.75rem 0.85rem;
+  color: rgba(0, 0, 0, 0.75);
+  font-weight: 700;
+}
+
+.hero-tool-item .icon {
+  color: #9a6b00;
 }
 
 .page-content {
@@ -251,6 +258,10 @@
 }
 
 .calculator-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   border: 1px solid rgba(241, 179, 0, 0.22);
   border-radius: 999px;
   background: rgba(241, 179, 0, 0.08);
@@ -400,7 +411,7 @@
   font-size: 0.82rem;
   font-weight: 700;
   color: rgba(0, 0, 0, 0.62);
-  letter-spacing: 0.03em;
+  letter-spacing: 0;
 }
 
 .repeat-toggle {
@@ -429,7 +440,7 @@
   color: var(--fhsu-gold);
   font-size: 0.75rem;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
 }
 
 .repeat-copy {
@@ -463,7 +474,7 @@
   margin: 0;
   font-size: clamp(2.7rem, 8vw, 4.4rem);
   line-height: 0.92;
-  letter-spacing: -0.06em;
+  letter-spacing: 0;
   font-weight: 800;
 }
 
@@ -496,7 +507,7 @@
   color: var(--fhsu-black);
   font-size: 1.4rem;
   line-height: 1;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
 }
 
 .final-exam-grid {
@@ -579,6 +590,9 @@
 
 .footer-links a,
 .footer-meta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   color: #725000;
   font-weight: 700;
 }
@@ -609,8 +623,14 @@
     padding: 1.5rem 1.5rem 3rem;
   }
 
+  .hero-content {
+    grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.6fr);
+    min-height: clamp(30rem, 58vh, 42rem);
+    padding: 1.25rem;
+  }
+
   .hero-body {
-    padding: 7.5rem 2rem 2rem;
+    padding: 2rem;
   }
 
   .course-row-grid-standard {
@@ -674,20 +694,8 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .hero-content {
-    min-height: auto;
-  }
-
-  .hero-topline {
-    position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
-    padding: 1rem 1rem 0;
-  }
-
   .hero-body {
-    padding-top: 1.35rem;
+    padding: 0.5rem;
   }
 
   .wordmark-text {
@@ -735,6 +743,10 @@
   .header-brand .wordmark-text {
     display: inline;
   }
+
+  .header-brand .wordmark-logo {
+    width: min(17rem, 74vw);
+  }
 }
 
 @keyframes revealUp {
@@ -746,16 +758,6 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes drift {
-  from {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-
-  to {
-    transform: translate3d(16px, -18px, 0) scale(1.08);
   }
 }
 

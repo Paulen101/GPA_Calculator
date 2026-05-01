@@ -1,3 +1,6 @@
+import fhsuLogo from '../assets/fhsu-primary-left-logo-black-text.png'
+import Icon from './Icon'
+
 function Header({ activeCalculator, activeGpaSection, onReset, onSelectCalculator }) {
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({
@@ -29,8 +32,11 @@ function Header({ activeCalculator, activeGpaSection, onReset, onSelectCalculato
           onClick={() => scrollTo('top')}
           aria-label="Scroll to top of page"
         >
-          <span className="wordmark-mark">FHSU</span>
-          <span className="wordmark-text">Fort Hays State GPA Calculator</span>
+          <img
+            className="wordmark-logo"
+            src={fhsuLogo}
+            alt="Fort Hays State University"
+          />
         </button>
 
         <nav className="header-nav" aria-label="Primary">
@@ -40,6 +46,7 @@ function Header({ activeCalculator, activeGpaSection, onReset, onSelectCalculato
             onClick={() => handleCalculatorSelect('gpa')}
             aria-current={activeCalculator === 'gpa' ? 'page' : undefined}
           >
+            <Icon name="calculator" />
             GPA Calculator
           </button>
           <button
@@ -48,6 +55,7 @@ function Header({ activeCalculator, activeGpaSection, onReset, onSelectCalculato
             onClick={() => handleCalculatorSelect('grade')}
             aria-current={activeCalculator === 'grade' ? 'page' : undefined}
           >
+            <Icon name="target" />
             Grade Calculator
           </button>
           {activeCalculator === 'gpa' ? (
@@ -58,6 +66,7 @@ function Header({ activeCalculator, activeGpaSection, onReset, onSelectCalculato
                 onClick={() => handleGpaSectionSelect('semester-calculator')}
                 aria-current={activeGpaSection === 'semester' ? 'location' : undefined}
               >
+                <Icon name="graduationCap" />
                 Semester
               </button>
               <button
@@ -66,11 +75,13 @@ function Header({ activeCalculator, activeGpaSection, onReset, onSelectCalculato
                 onClick={() => handleGpaSectionSelect('cumulative-calculator')}
                 aria-current={activeGpaSection === 'cumulative' ? 'location' : undefined}
               >
+                <Icon name="chart" />
                 Cumulative
               </button>
             </>
           ) : null}
           <button type="button" className="btn btn-secondary header-reset" onClick={onReset}>
+            <Icon name="refresh" />
             Start Over
           </button>
         </nav>
